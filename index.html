@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maëlle Mohr — Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F7F5F0;
+      --ink: #1A1814;
+      --muted: #8A8680;
+      --accent: #2D5A3D;
+      --accent-light: #E8F0EB;
+      --line: #D8D4CC;
+      --card: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(247, 245, 240, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav.scrolled { border-bottom-color: var(--line); }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-text { }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.35s forwards;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.45s forwards;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .hero-visual {
+      opacity: 0;
+      animation: fadeIn 0.8s 0.5s forwards;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .stat-dot.orange { background: #C4703A; }
+    .stat-dot.blue { background: #3A6BC4; }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-top: 0.1rem;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      max-width: 1200px;
+      margin: 0 3rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      background: var(--card);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .project-row:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+      border-color: #bbb;
+    }
+
+    /* alternance : pair = démo à gauche, impair = démo à droite */
+    .project-row:nth-child(even) .project-demo { order: -1; }
+
+    .project-demo {
+      background: var(--bg);
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-row:nth-child(even) .project-demo {
+      border-right: none;
+      border-left: 1px solid var(--line);
+    }
+
+    .demo-coming {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .demo-coming-icon {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .demo-coming span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .demo-iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .demo-iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    .demo-overlay {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .demo-overlay-label {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .project-demo:hover .demo-overlay-label { opacity: 1; }
+
+    .project-info {
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .project-type.orange {
+      color: #C4703A;
+      background: #F5EDE6;
+    }
+
+    .project-type.blue {
+      color: #3A6BC4;
+      background: #E6EDF5;
+    }
+
+    .project-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .project-link:hover { color: var(--ink); }
+
+    .project-link.disabled {
+      opacity: 0.35;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @media (max-width: 768px) {
+      .project-row { grid-template-columns: 1fr; }
+      .project-demo { min-height: 180px; border-right: none !important; border-left: none !important; border-bottom: 1px solid var(--line); }
+      .project-row:nth-child(even) .project-demo { order: 0; }
+    }
+
+    /* ── STACK ── */
+    .stack-section { background: var(--bg); }
+
+    .stack-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .stack-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .stack-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .stack-item {
+      font-size: 0.9rem;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .stack-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+
+    .about-text p + p { margin-top: 1.25rem; }
+
+    .about-aside { }
+
+    .aside-block {
+      margin-bottom: 2rem;
+    }
+
+    .aside-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .aside-value {
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+      padding: 6rem 3rem 8rem;
+    }
+
+    .contact-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      hr.divider { margin: 0 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">Maëlle Mohr</a>
+    <ul class="nav-links">
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-label">Epitech PGE · Data Engineering · Analyse</p>
+      <h1 class="hero-name">Maëlle<br/><em>Mohr</em></h1>
+      <p class="hero-tagline">J'aime comprendre comment les données racontent une histoire — de la construction de pipelines à l'analyse et la visualisation.</p>
+      <div class="hero-cta">
+        <a href="#projets" class="btn-primary">Voir mes projets</a>
+        <a href="CV_MOHR_Maelle_FR.pdf" download class="btn-ghost">CV FR ↓</a>
+        <a href="CV_MOHR_Maelle_EN.pdf" download class="btn-ghost">CV EN ↓</a>
+        <a href="https://www.linkedin.com/in/ma%C3%ABlle-mohr-8aa1442a3/" target="_blank" class="btn-ghost">LinkedIn →</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-dot"></div>
+        <div>
+          <div class="stat-label">Focus actuel</div>
+          <div class="stat-value">Data Engineering</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-dot orange"></div>
+        <div>
+          <div class="stat-label">Expérience</div>
+          <div class="stat-value">BCE — Pipelines ETL & Airflow</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-dot blue"></div>
+        <div>
+          <div class="stat-label">Localisation</div>
+          <div class="stat-value">France 🇫🇷</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section id="projets">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Projets</h2>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- Bidle -->
+      <div class="project-row">
+        <div class="project-demo">
+          <div class="demo-coming">
+            <div class="demo-coming-icon">◌</div>
+            <span>Démo à venir</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type">Mobile · IA</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Bidle</h3>
+          <p class="project-desc">Application mobile d'accompagnement digestif personnel. L'IA apprend les patterns uniques de chaque utilisateur pour proposer des recommandations alimentaires contextualisées — avant, pendant et après chaque repas.</p>
+          <div class="project-stack">
+            <span class="tag">React Native</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">IA</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link disabled">⊘ Repo privé</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline ETL -->
+      <div class="project-row">
+        <div class="project-demo">
+          <div class="demo-coming">
+            <div class="demo-coming-icon">◌</div>
+            <span>Coming soon</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type orange">Data Engineering</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">Pipeline ETL Open Data</h3>
+          <p class="project-desc">Pipeline de données automatisé sur des données publiques (transports, météo…). Ingestion, transformation et stockage orchestrés avec Airflow, visualisation en temps réel.</p>
+          <div class="project-stack">
+            <span class="tag">Python</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">dbt</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Mae11e" target="_blank" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="project-row">
+        <div class="project-demo">
+          <div class="demo-coming">
+            <div class="demo-coming-icon">◌</div>
+            <span>Coming soon</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type blue">Data Analyse</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">Dashboard Interactif</h3>
+          <p class="project-desc">Analyse et visualisation interactive d'un dataset public. Exploration des données, corrélations et insights clés avec une interface Streamlit déployée en ligne.</p>
+          <div class="project-stack">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Plotly</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Mae11e" target="_blank" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modèle ML -->
+      <div class="project-row">
+        <div class="project-demo">
+          <div class="demo-coming">
+            <div class="demo-coming-icon">◌</div>
+            <span>Coming soon</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type">Machine Learning</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3 class="project-title">Modèle de Prédiction</h3>
+          <p class="project-desc">Entraînement et évaluation d'un modèle ML sur un dataset concret. Pipeline complet de la préparation des données à l'exposition du modèle via une interface interactive.</p>
+          <div class="project-stack">
+            <span class="tag">Python</span>
+            <span class="tag">scikit-learn</span>
+            <span class="tag">Jupyter</span>
+            <span class="tag">Gradio</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Mae11e" target="_blank" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Addee -->
+      <div class="project-row">
+        <div class="project-demo">
+          <div class="demo-coming">
+            <div class="demo-coming-icon">◌</div>
+            <span>Démo sur demande</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="project-type orange">Mobile · Full-stack</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">Addee</h3>
+          <p class="project-desc">Application mobile développée en équipe. Projet professionnel — repo confidentiel, démo disponible sur demande.</p>
+          <div class="project-stack">
+            <span class="tag">React Native</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">TypeScript</span>
+          </div>
+          <div class="project-links">
+            <a href="#contact" class="project-link">→ Me contacter</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Stack</h2>
+    </div>
+
+    <div class="stack-groups">
+      <div>
+        <p class="stack-group-title">Data & Pipeline</p>
+        <div class="stack-items">
+          <span class="stack-item">Python</span>
+          <span class="stack-item">Apache Airflow</span>
+          <span class="stack-item">dbt</span>
+          <span class="stack-item">SQL / PostgreSQL</span>
+          <span class="stack-item">ETL & Data Pipelines</span>
+        </div>
+      </div>
+      <div>
+        <p class="stack-group-title">Analyse & Viz</p>
+        <div class="stack-items">
+          <span class="stack-item">Pandas / NumPy</span>
+          <span class="stack-item">Streamlit</span>
+          <span class="stack-item">Plotly</span>
+          <span class="stack-item">Jupyter</span>
+        </div>
+      </div>
+      <div>
+        <p class="stack-group-title">Machine Learning</p>
+        <div class="stack-items">
+          <span class="stack-item">scikit-learn</span>
+          <span class="stack-item">MLflow</span>
+          <span class="stack-item">Gradio</span>
+        </div>
+      </div>
+      <div>
+        <p class="stack-group-title">Dev & Outils</p>
+        <div class="stack-items">
+          <span class="stack-item">TypeScript</span>
+          <span class="stack-item">React Native</span>
+          <span class="stack-item">NestJS</span>
+          <span class="stack-item">Git / GitHub</span>
+          <span class="stack-item">Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">À propos</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Étudiante en Programme Grande École à Epitech Nancy, je me suis orientée vers la data après avoir découvert qu'on pouvait transformer des fichiers bruts et désordonnés en quelque chose d'utile et de lisible. Ce qui me plaît, c'est comprendre comment les données racontent une histoire — que ce soit à travers un pipeline bien construit, une visualisation claire, ou un modèle qui prédit quelque chose de concret.</p>
+        <p>J'ai eu la chance de travailler chez BCE sur des pipelines ETL et des workflows Airflow, ce qui m'a donné un premier contact sérieux avec la data en production. Depuis, j'explore aussi l'analyse et le machine learning pour avoir une vision complète de ce que le métier implique.</p>
+        <p>Je cherche des projets et des environnements où je peux continuer à apprendre, toucher à des problèmes réels, et progresser vite.</p>
+      </div>
+
+      <div class="about-aside">
+        <div class="aside-block">
+          <p class="aside-label">Formation</p>
+          <p class="aside-value">Programme Grande École — Epitech<br/>2023 – 2028 · Nancy, France<br/><br/>Année Pro — HoGent<br/>Belgique</p>
+        </div>
+        <div class="aside-block">
+          <p class="aside-label">Expérience</p>
+          <p class="aside-value">BCE — Data Engineering<br/>Pipelines ETL & Airflow</p>
+        </div>
+        <div class="aside-block">
+          <p class="aside-label">Langues</p>
+          <p class="aside-value">Français · Anglais</p>
+        </div>
+        <div class="aside-block">
+          <p class="aside-label">Disponibilité</p>
+          <p class="aside-value">Ouverte aux opportunités</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <p class="contact-eyebrow">Contact</p>
+    <h2 class="contact-heading">Travaillons<br/><em>ensemble</em></h2>
+    <p class="contact-sub">Une question, une opportunité, un projet ?</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/ma%C3%ABlle-mohr-8aa1442a3/" target="_blank" class="btn-primary">LinkedIn</a>
+      <a href="CV_MOHR_Maelle_FR.pdf" download class="btn-ghost">CV FR ↓</a>
+      <a href="CV_MOHR_Maelle_EN.pdf" download class="btn-ghost">CV EN ↓</a>
+      <a href="https://github.com/Mae11e" target="_blank" class="btn-ghost">GitHub →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2025 Maëlle Mohr</span>
+    <div class="footer-links">
+      <a href="https://github.com/Mae11e" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/ma%C3%ABlle-mohr-8aa1442a3/" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
