@@ -1,0 +1,216 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<section id="stack">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Stack</h2>
+  </div>
+
+  <div class="stack-categories">
+
+    <div class="stack-category">
+      <p class="category-label">Maîtrise</p>
+      <div class="stack-grid">
+        <div class="tech-card">
+          <i class="devicon-python-plain colored"></i>
+          <span class="tech-name">Python</span>
+          <span class="tech-context">Epitech · BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-postgresql-plain colored"></i>
+          <span class="tech-name">SQL / PostgreSQL</span>
+          <span class="tech-context">BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-c-plain colored"></i>
+          <span class="tech-name">C</span>
+          <span class="tech-context">Epitech</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-cplusplus-plain colored"></i>
+          <span class="tech-name">C++</span>
+          <span class="tech-context">Epitech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-category">
+      <p class="category-label">Utilisé en projet</p>
+      <div class="stack-grid">
+        <div class="tech-card">
+          <i class="devicon-apacheairflow-plain colored"></i>
+          <span class="tech-name">Airflow</span>
+          <span class="tech-context">BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-pandas-plain colored"></i>
+          <span class="tech-name">Pandas</span>
+          <span class="tech-context">BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-django-plain colored"></i>
+          <span class="tech-name">Django</span>
+          <span class="tech-context">BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-jupyter-plain colored"></i>
+          <span class="tech-name">Jupyter</span>
+          <span class="tech-context">BCE</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-git-plain colored"></i>
+          <span class="tech-name">Git</span>
+          <span class="tech-context">Epitech · projets perso</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-react-original colored"></i>
+          <span class="tech-name">React Native</span>
+          <span class="tech-context">Addee · Bidle</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-nestjs-plain colored"></i>
+          <span class="tech-name">NestJS</span>
+          <span class="tech-context">Addee</span>
+        </div>
+        <div class="tech-card">
+          <i class="devicon-typescript-plain colored"></i>
+          <span class="tech-name">TypeScript</span>
+          <span class="tech-context">Addee</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-category">
+      <p class="category-label">En apprentissage</p>
+      <div class="stack-grid">
+        <div class="tech-card learning">
+          <i class="devicon-scikitlearn-plain colored"></i>
+          <span class="tech-name">scikit-learn</span>
+          <span class="tech-context">En cours</span>
+        </div>
+        <div class="tech-card learning">
+          <i class="devicon-streamlit-plain colored"></i>
+          <span class="tech-name">Streamlit</span>
+          <span class="tech-context">En cours</span>
+        </div>
+        <div class="tech-card learning">
+          <i class="devicon-apachespark-plain colored"></i>
+          <span class="tech-name">Spark</span>
+          <span class="tech-context">En cours</span>
+        </div>
+        <div class="tech-card learning">
+          <img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="custom-icon" />
+          <span class="tech-name">Power BI</span>
+          <span class="tech-context">En cours</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+
+  .stack-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .category-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .stack-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .tech-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.25rem 1rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 0.4rem;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    cursor: default;
+  }
+
+  .tech-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+
+  .tech-card.learning {
+    border-style: dashed;
+    opacity: 0.7;
+  }
+
+  .tech-card.learning:hover { opacity: 1; }
+
+  .tech-card i {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .custom-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    object-fit: contain;
+    margin-bottom: 0.25rem;
+  }
+
+  .tech-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .tech-context {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 4rem 1.5rem; }
+    .stack-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  }
+</style>

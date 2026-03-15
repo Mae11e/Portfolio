@@ -1,0 +1,490 @@
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">À propos</h2>
+  </div>
+
+  <div class="about-content">
+
+    <!-- BIO -->
+    <div class="about-text">
+      <p>
+        C'est chez BCE que j'ai vraiment basculé vers la data. Construire des pipelines,
+        automatiser des rapports, voir que ce que je codais servait concrètement à quelqu'un
+        — c'est ça qui m'a accrochée.
+      </p>
+      <p>
+        Depuis, c'est cette logique qui guide mes choix : comprendre comment les données
+        racontent une histoire, que ce soit à travers un pipeline bien construit,
+        une visualisation claire ou un modèle prédictif.
+      </p>
+      <p class="about-text-muted">
+        J'explore maintenant l'analyse et le machine learning pour avoir une vision complète
+        du métier. Je cherche un environnement où je peux continuer à apprendre vite
+        et toucher à des problèmes réels.
+      </p>
+    </div>
+
+    <div class="about-blocks">
+
+      <!-- FORMATION -->
+      <div class="info-block">
+        <p class="block-label">Formation</p>
+
+        <div class="f-grid">
+
+          <div class="f-cell">
+            <p class="f-year">2023 – 2028</p>
+            <div class="f-school-row">
+              <span class="f-school">Epitech Nancy</span>
+              <a class="f-link" href="https://www.epitech.eu" target="_blank">↗</a>
+            </div>
+            <p class="f-location">Nancy, France</p>
+            <p class="f-program">Programme Grande École</p>
+            <div class="f-diplomas">
+              <p class="f-diploma">Diplôme d'Experte en technologies de l'information visé par le ministère de l'Enseignement supérieur et de la Recherche</p>
+              <p class="f-diploma">Titre d'Experte en ingénierie logicielle enregistré au RNCP niveau 7</p>
+            </div>
+          </div>
+
+          <div class="f-cell">
+            <p class="f-year">2026 – 2027</p>
+            <div class="f-school-row">
+              <span class="f-school">HoGent</span>
+              <a class="f-link" href="https://www.hogent.be" target="_blank">↗</a>
+            </div>
+            <p class="f-location">Belgique, Ghent</p>
+            <p class="f-program">Applied Computer Science</p>
+            <p class="f-note">4ème année à l'étranger dans le cadre du parcours Epitech — année intégrée au Programme Grande École.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="info-block">
+        <p class="block-label">Expérience</p>
+
+        <div class="experience-timeline">
+
+          <div class="exp-col">
+            <div class="exp-dot accent"></div>
+            <p class="exp-date">Juil. – Août 2025</p>
+            <p class="exp-group-badge">BCE</p>
+            <p class="exp-company">Stagiaire Data & IA</p>
+            <p class="exp-role">Pipelines ETL, automatisation, ML</p>
+            <div class="exp-tags">
+              <span class="tag">Airflow</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Django</span>
+            </div>
+          </div>
+
+          <div class="exp-col">
+            <div class="exp-dot"></div>
+            <p class="exp-date">Fév. – Juil. 2025</p>
+            <p class="exp-group-badge">Epitech</p>
+            <p class="exp-company">Assistante Régionale</p>
+            <p class="exp-role">Encadrement technique et évaluation projets</p>
+            <div class="exp-tags">
+              <span class="tag">Encadrement</span>
+              <span class="tag">Évaluation</span>
+            </div>
+          </div>
+
+          <div class="exp-col">
+            <div class="exp-dot"></div>
+            <p class="exp-date">Juil. – Déc. 2024</p>
+            <p class="exp-group-badge">BCE</p>
+            <p class="exp-company">Stagiaire IT Service Management</p>
+            <p class="exp-role">BDD et automatisation réseau</p>
+            <div class="exp-tags">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MS SQL</span>
+              <span class="tag">Python</span>
+              <span class="tag">NetBox</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- INFOS FOOTER -->
+      <div class="infos-footer">
+        <div class="infos-left">
+          <div class="i-group">
+            <span class="i-label">Langues</span>
+            <span class="i-dot">·</span>
+            <span class="i-value">Français — natif <span class="i-sub">Anglais 880/990 TOEIC</span></span>
+          </div>
+          <div class="i-divider"></div>
+          <div class="i-group">
+            <span class="i-label">Disponibilité</span>
+            <span class="i-dot">·</span>
+            <span class="i-value">Stage Data <span class="i-sub">1 avr. – 31 juil. 2026</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 3rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.section-title {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  letter-spacing: -0.02em;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-text {
+  width: 100%;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.about-text p + p {
+  margin-top: 0.85rem;
+}
+
+.about-text-muted {
+  color: var(--muted) !important;
+}
+
+.about-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.block-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* FORMATION */
+.f-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.f-cell {
+  background: var(--card);
+  padding: 1.5rem;
+  transition: background 0.15s;
+}
+
+.f-cell:hover {
+  background: var(--accent-light);
+}
+
+.f-year {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.f-school-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.f-school {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.f-link {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.f-link:hover {
+  opacity: 1;
+}
+
+.f-location {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.f-program {
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.f-diplomas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.f-diploma {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.f-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+/* EXPERIENCE TIMELINE */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  gap: 0;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  z-index: 0;
+}
+
+.exp-col {
+  flex: 1;
+  position: relative;
+  padding-top: 1.75rem;
+  padding-right: 1.5rem;
+}
+
+.exp-col:last-child {
+  padding-right: 0;
+}
+
+.exp-dot {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--muted);
+  z-index: 1;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.exp-dot.accent {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.exp-col:hover .exp-dot {
+  border-color: var(--ink);
+  background: var(--ink);
+}
+
+.exp-date {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.exp-group-badge {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+
+.exp-company {
+  font-family: "DM Serif Display", serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.exp-role {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+/* INFOS FOOTER */
+.infos-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.infos-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.i-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.i-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.i-dot {
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+
+.i-value {
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.i-sub {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-left: 0.4rem;
+}
+
+.i-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  .f-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-timeline {
+    flex-direction: column;
+    padding-left: 1.25rem;
+  }
+
+  .experience-timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .exp-col {
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+    padding-right: 0;
+  }
+
+  .exp-dot {
+    top: 2px;
+    left: -1.55rem;
+  }
+
+  .infos-left {
+    gap: 1rem;
+  }
+
+  .i-divider {
+    display: none;
+  }
+}
+</style>

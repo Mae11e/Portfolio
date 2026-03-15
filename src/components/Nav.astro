@@ -1,0 +1,109 @@
+<nav id="nav">
+  <a href="#" class="nav-logo">Maëlle Mohr</a>
+  <ul class="nav-links">
+    <li><a href="#projets" data-section="projets">Projets</a></li>
+    <li><a href="#stack" data-section="stack">Stack</a></li>
+    <li><a href="#about" data-section="about">À propos</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(247, 245, 240, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  nav.scrolled { border-bottom-color: var(--line); }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-links a.active {
+    color: var(--ink);
+  }
+
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const sections = ['projets', 'stack', 'about', 'contact'];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav-links a').forEach((a) => {
+            a.classList.remove('active');
+          });
+          const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+          active?.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px' }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
