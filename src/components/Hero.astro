@@ -1,163 +1,108 @@
-<section class="hero">
-  <div class="hero-text">
-    <p class="hero-label">Epitech PGE · Data Engineering · Analyse</p>
-    <h1 class="hero-name">Maëlle<br/><em>Mohr</em></h1>
-    <p class="hero-tagline">J'aime comprendre comment les données racontent une histoire — de la construction de pipelines à l'analyse et la visualisation.</p>
-    <div class="hero-cta">
-      <a href="#projets" class="btn-primary">Voir mes projets</a>
-      <a href="/CV_MOHR_Maelle_FR.pdf" download class="btn-ghost">CV FR ↓</a>
-      <a href="/CV_MOHR_Maelle_EN.pdf" download class="btn-ghost">CV EN ↓</a>
-      <a href="https://www.linkedin.com/in/ma%C3%ABlle-mohr-8aa1442a3/" target="_blank" class="btn-ghost">LinkedIn →</a>
-    </div>
-  </div>
+---
+---
+<header id="home" class="header">
+  <div class="header-inner">
+    <p class="eyebrow">Maëlle Mohr</p>
+    <h1>Aspiring AI and Data Architect, <span>business-oriented</span></h1>
+    <p class="bio">
+      Computer science student in the Grande École program at Epitech Nancy, currently
+      focused on data engineering and AI. My interest in data comes from hands-on
+      experience building ETL pipelines and Power BI dashboards during two internships —
+      not just theory. I care about turning messy, real-world data into something a
+      business can actually act on.
+    </p>
 
-  <div class="hero-visual">
-    <div class="stat-card">
-      <div class="stat-dot"></div>
-      <div>
-        <div class="stat-label">Focus actuel</div>
-        <div class="stat-value">Data Engineering</div>
-      </div>
+    <div class="next-steps">
+      <span class="label">Next up</span>
+      <p>
+        Academic exchange at <strong>HoGent</strong>, Ghent (2026–2027) — followed by a
+        part-time internship search, <strong>September 2027 – February 2028</strong>.
+      </p>
     </div>
-    <div class="stat-card">
-      <div class="stat-dot blue"></div>
-      <div>
-        <div class="stat-label">Formation</div>
-        <div class="stat-value">Epitech PGE · HoGent</div>
-      </div>
+
+    <div class="links">
+      <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener" class="link">LinkedIn</a>
+      <a href="#projects" class="link">Projects</a>
+      <a href="/cv-en.pdf" download class="link link-primary">Download CV</a>
     </div>
   </div>
-</section>
+</header>
 
 <style>
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 3rem 4rem;
-    gap: 4rem;
-    max-width: 1200px;
+  .header {
+    padding: 6rem 1.5rem 4rem;
+    max-width: 720px;
     margin: 0 auto;
   }
-
-  .hero-label {
+  .eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.1s forwards;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
   }
-
-  .hero-name {
+  h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.2s forwards;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--ink);
+    line-height: 1.25;
+    margin: 0 0 1.5rem;
   }
-
-  .hero-name em {
-    font-style: italic;
+  h1 span {
     color: var(--accent);
   }
-
-  .hero-tagline {
+  .bio {
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.05rem;
     color: var(--muted);
-    max-width: 38ch;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.35s forwards;
     line-height: 1.7;
+    margin-bottom: 2rem;
   }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.45s forwards;
+  .next-steps {
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 2.5rem;
   }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 0.75rem 1.75rem;
-    border-radius: 2px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-
-  .btn-ghost {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
+  .next-steps .label {
     font-family: 'DM Mono', monospace;
-    letter-spacing: 0.04em;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
-
-  .hero-visual {
-    opacity: 0;
-    animation: fadeIn 0.8s 0.5s forwards;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .stat-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .stat-dot.orange { background: #C4703A; }
-  .stat-dot.blue { background: #3A6BC4; }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
+    font-size: 0.75rem;
     text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
   }
-
-  .stat-value {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
+  .next-steps p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
     color: var(--ink);
-    margin-top: 0.1rem;
+    margin: 0.4rem 0 0;
+    line-height: 1.6;
   }
-
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
-    .hero-visual { display: none; }
+  .links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .link-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .link-primary:hover {
+    opacity: 0.9;
+    color: var(--bg);
   }
 </style>
