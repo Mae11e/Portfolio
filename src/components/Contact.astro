@@ -1,108 +1,40 @@
-<section id="contact">
-  <p class="contact-eyebrow">Contact</p>
-  <h2 class="contact-heading">Travaillons<br/><em>ensemble</em></h2>
-  <p class="contact-sub">Une question, une opportunité, un projet ?</p>
-
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-text">
+    Feel free to reach out — I'm happy to talk about data, projects, or opportunities.
+  </p>
   <a href="mailto:maelle.mohr@epitech.eu" class="contact-email">maelle.mohr@epitech.eu</a>
-
-  <div class="contact-links">
-    <a href="https://www.linkedin.com/in/ma%C3%ABlle-mohr-8aa1442a3/" target="_blank" class="btn-primary">LinkedIn</a>
-    <a href="/CV_MOHR_Maelle_FR.pdf" download class="btn-ghost">CV FR ↓</a>
-    <a href="/CV_MOHR_Maelle_EN.pdf" download class="btn-ghost">CV EN ↓</a>
-    <a href="https://github.com/Mae11e" target="_blank" class="btn-ghost">GitHub →</a>
-  </div>
 </section>
 
 <style>
-  section {
-    max-width: 1200px;
+  .contact {
+    max-width: 720px;
     margin: 0 auto;
-    padding: 6rem 3rem 8rem;
+    padding: 4rem 1.5rem 6rem;
     text-align: center;
   }
-
-  .contact-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-heading {
+  .section-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    letter-spacing: -0.03em;
+    font-size: 1.75rem;
+    color: var(--ink);
     margin-bottom: 1rem;
-    line-height: 1.1;
   }
-
-  .contact-heading em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .contact-sub {
+  .contact-text {
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     color: var(--muted);
     margin-bottom: 1.5rem;
   }
-
   .contact-email {
-    display: inline-block;
     font-family: 'DM Mono', monospace;
-    font-size: 0.95rem;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
-    margin-bottom: 2.5rem;
-    transition: color 0.2s, border-color 0.2s;
-    letter-spacing: 0.02em;
-  }
-
-  .contact-email:hover {
+    font-size: 1.1rem;
     color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 0.75rem 1.75rem;
-    border-radius: 2px;
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-
-  .btn-ghost {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.04em;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--accent);
     padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    transition: opacity 0.2s ease;
   }
-
-  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
-
-  @media (max-width: 768px) {
-    section { padding: 4rem 1.5rem 6rem; }
+  .contact-email:hover {
+    opacity: 0.75;
   }
 </style>
